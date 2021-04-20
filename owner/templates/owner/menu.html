@@ -3,8 +3,12 @@
 
 {% block body %}
 <h1>Menu list</h1>
+<button>
+    <a href="{% url 'add_menu' %}" class="navbar-link btn-lg" style="background-color:#e97f06;color:hsl(0, 29%, 97%);">Add Menu</a>
+</button>
+
 <div class="row"> 
-    <div class="col-md">
+    <div class="col-md-12">
         <div class="card card-body">
         </div>
         <div class="card card-body">
@@ -14,6 +18,7 @@
                     <th>name</th>
                     <th>category</th>
                     <th>price</th>
+                    <th>Action</th>
                 </tr>
                 {%  for i in menu%}
                 <tr>
@@ -21,10 +26,20 @@
                     <td>{{i.Name}}</td>
                     <td>{{i.category}}</td>
                     <td>{{i.Price}}</td>
+                    <td>
+                        <a href="{% url 'updatemenu' i.Menu_id %}" class="btn btn-warning" >edit</a>
+                        <form action="{% url 'deletemenu' i.Menu_id %}" method="POST" class="d-inline">
+                            {% csrf_token %}
+                            <input type="submit" class="btn btn-danger" value="Delete">
+                        </form>
+                       
+                    </td>
+                  
                  {% endfor %}
                 </tr>
             </table>
         </div>
     </div>
 </div>
+
 {% endblock %}

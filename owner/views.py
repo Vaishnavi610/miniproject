@@ -7,7 +7,7 @@ from django.contrib import messages
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 from .decorators import unauthenticated_user, allowed_users, admin_only
-from .forms import userform, info
+from .forms import userform, info, menuform
 
 
 # Create your views here.
@@ -149,7 +149,40 @@ def home2(request):
 
 
 
+#This function will add new menu
+def add_menu(request):
+    if request.method == 'POST':
+         form=menuform(request.POST)
+         if form.is_valid():
+             form.save()
+    else:
+         form=menuform()
+    return render(request,"owner/add_menu.html",{'form':form})
 
+
+#This function update menu
+def update_menu(request,id):
+    form={}
+    if request.method == 'POST':
+        pi = Menu.objects.get(pk=id)
+        form=menuform(request.POST, instance=pi)
+        
+        
+        if form.is_valid():
+             form.save()
+        else:
+            pi = Menu.objects.get(pk=id)
+            form=menuform(instance=pi)
+    return render(request, "owner/update_menu.html",{'form':form})  
+
+#This function delete menu
+def delete_menu(request,id):
+    if request.method =='POST':
+        pi=Menu.objects.get(pk=id)
+        pi.delete()
+    menu = Menu.objects.all()
+
+    return render(request, "owner/menu.html",{'menu': menu})
 
 
 
