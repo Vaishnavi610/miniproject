@@ -3,9 +3,9 @@
 {% block body %}
 <div class="searchbar">
     <div class="field">
-      <form  action=" " method="get">
-          <input class="inpt" name="MemberId" type="text" placeholder="Member Id">
-          <input type="submit" name="search" value="search">
+      <form  action="/search" method="get">
+          <input class="inpt"  type="text" placeholder="Member Id" name="query" id="search">
+          <button type="submit" >Search</button>
       </form>
       <button >present members</button>
       <button>scan</button>
@@ -13,3 +13,4 @@
   </div>
   <hr width="100%" height="50px">
 {% endblock %}
+<input type="submit" name="search" value="search">

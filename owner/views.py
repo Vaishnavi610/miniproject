@@ -90,8 +90,7 @@ def home(request):
 
 def logout(request):
     django_logout(request)
-    return render(request, 'owner/login.html')
-
+    return redirect("login")
 @login_required(login_url='login')
 @allowed_users(allowed_roles=['member'])
 def index(request):
@@ -184,7 +183,13 @@ def delete_menu(request,id):
 
     return render(request, "owner/menu.html",{'menu': menu})
 
-
+def search(request):
+    query=request.GET['query']
+    values=user.objects.filter(pk=query)
+   
+    return render(request, "owner/search.html", {
+        'data': values
+    })
 
 
 
