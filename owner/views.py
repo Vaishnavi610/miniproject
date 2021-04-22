@@ -154,6 +154,7 @@ def add_menu(request):
          form=menuform(request.POST)
          if form.is_valid():
              form.save()
+             return redirect("/menu")
     else:
          form=menuform()
     return render(request,"owner/add_menu.html",{'form':form})
@@ -169,6 +170,7 @@ def update_menu(request,id):
         
         if form.is_valid():
              form.save()
+             return redirect("/menu")
         else:
             pi = Menu.objects.get(pk=id)
             form=menuform(instance=pi)
