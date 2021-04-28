@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.models import User
 from .models import user
-from .models import Menu
+from .models import Menu,Absent
 
 
 
@@ -31,4 +31,15 @@ class menuform(forms.ModelForm):
         # specify fields to be used
         fields = ('Menu_id','Name','category','Price')
         labels = {'Name':'Enter Name' , 'category':'Enter category','Price':'Enter Price'}
+
+
+
+class absentform(forms.ModelForm):
+    class Meta:
+        model = Absent
+        fields = ('first_name','last_name','Time','Day','From_date','To_date')
+   
+    
+  
+
     

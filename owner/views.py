@@ -7,7 +7,8 @@ from django.contrib import messages
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 from .decorators import unauthenticated_user, allowed_users, admin_only
-from .forms import userform, info, menuform
+from .forms import userform, info, menuform,absentform
+from datetime import date
 
 
 # Create your views here.
@@ -194,4 +195,20 @@ def search(request):
     })
 
 
+def notcome(request):
+    notcome = Absent.objects.all()
+    return render(request,"owner/notcome.html",{'notcome':notcome})
 
+
+
+
+
+def absent(request):
+    if request.method == 'POST':
+        form=absentform(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect("/home2")
+    else:
+        form=absentform()
+    return render(request,"owner/absent.html",{'form':form})

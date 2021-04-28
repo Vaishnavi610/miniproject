@@ -1,4 +1,4 @@
-from .models import user, Payment ,Menu,Transaction
+from .models import user, Payment ,Menu,Transaction,Absent
 
 from django.contrib import admin
 # Register your models here.
@@ -14,10 +14,15 @@ class userAdmin(admin.ModelAdmin):
 class TransactionAdmin(admin.ModelAdmin):
     list_display=("Member_id","Menu_id","Quantity")
 
+class AbsentAdmin(admin.ModelAdmin):
+   
+    list_display=("id","first_name","last_name", "Time","Day","From_date","To_date")
+
 
 
 admin.site.register(user,  userAdmin)
 admin.site.register(Payment)
 admin.site.register(Menu, MenuAdmin)
 admin.site.register(Transaction,TransactionAdmin)
+admin.site.register(Absent, AbsentAdmin)
 

@@ -1,5 +1,27 @@
 {% extends 'owner/user.html' %}
 
 {% block body %}
-    <h1>hello!</h1>
+<h1>Current Status</h1>
+<button class="navbar-link btn-lg"  float="right" style="background-color:#e97f06;">
+    <a href="{% url 'absent' %}" style="color:hsl(0, 29%, 97%)">Present/Not</a>
+</button>
+<div class="row"> 
+    <div class="col-md-12">
+        <div class="card card-body">
+        </div>
+        <div class="card card-body">
+            <table class="table">
+                <tr>
+                    <th>member_id</th>
+                    <th>Date</th>
+                    <th>Menu_id</th>
+                    <th>Amount</th>
+                    <th>Total Bill</th>
+                    <th>Status</th>
+                </tr>
+               
+            </table>
+        </div>
+    </div>
+</div>
 {% endblock %}

@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from datetime import date
 
 
 # Create your models here
@@ -23,7 +24,7 @@ class Menu(models.Model):
     CATEGORY=(
         ('Beverages','Beverages'),
         ('Thali','Thali'),
-        ('snaks', 'snacks')
+        ('snacks', 'snacks')
     )
     Menu_id = models.AutoField(primary_key=True)
     Name= models.CharField(max_length=50, null=True)
@@ -50,3 +51,20 @@ class Payment(models.Model):
 
 
 
+class Absent(models.Model):
+    TIME=(
+        ('Day','Day'),
+        ('Night','Night'),
+        ('Both','Both')
+    )
+    SELECT=(
+        ('Today','Today'),
+        ('More','More')
+    )
+    Member_id = models.ForeignKey(user, on_delete=models.CASCADE, null=True)
+    first_name = models.CharField(max_length=50, null=True)
+    last_name = models.CharField(max_length=50, null=True)
+    Time = models.CharField(max_length=50, null=True, choices=TIME)
+    Day = models.CharField(max_length=50, null=True, choices=SELECT)
+    From_date =models.DateField(null=True)
+    To_date =models.DateField(null=True)

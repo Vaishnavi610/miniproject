@@ -23,4 +23,7 @@ urlpatterns = [
     path("add_menu/", views.add_menu, name="add_menu"),
     path("delete/<int:id>", views.delete_menu, name="deletemenu"),
     path("<int:id>/", views.update_menu, name="updatemenu"),
+    path("notcome/", views.notcome, name="notcome"),
+    path("absent/", views.absent, name="absent"),
+  
 ]
