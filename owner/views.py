@@ -7,7 +7,7 @@ from django.contrib import messages
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 from .decorators import unauthenticated_user, allowed_users, admin_only
-from .forms import userform, info, menuform,absentform
+from .forms import userform, info, menuform,absentform, EditUserProfileForm 
 from datetime import date
 
 
@@ -212,3 +212,17 @@ def absent(request):
     else:
         form=absentform()
     return render(request,"owner/absent.html",{'form':form})
+
+
+#userprofile
+def userprofile(request):
+    fm={}
+    if request.method == 'POST':
+        fm = EditUserProfileForm(request.POST, instance=request.user)
+        if fm.is_valid():
+            fm.save()
+            return redirect("/userprofile")
+               
+    else:
+        fm = EditUserProfileForm(instance=request.user)
+    return render(request, "owner/userprofile.html",{'form':fm})

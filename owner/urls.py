@@ -25,5 +25,6 @@ urlpatterns = [
     path("<int:id>/", views.update_menu, name="updatemenu"),
     path("notcome/", views.notcome, name="notcome"),
     path("absent/", views.absent, name="absent"),
+    path("userprofile/", views.userprofile, name="userprofile"),
   
 ]
