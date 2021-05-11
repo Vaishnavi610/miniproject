@@ -1,0 +1,44 @@
+{% extends 'owner/layout.html' %}
+
+{%block body%}
+<h1>Members Data</h1>
+
+<div class="row">
+    <div class="col-md">
+        <div class="card card-body">
+        </div>
+        <div class="card card-body">
+            <table class="table">
+                <tr>
+                    <th>member id</th>
+
+                    <th>first_name</th>
+
+                    <th>last_name</th>
+                    <th>mobile</th>
+                    <th>department</th>
+                    <th>payment_mode</th>
+                    <th>time_mode</th>
+                </tr>
+                {% for i in data %}
+                <tr>
+                    <td>{{i.user_id}} </td>
+
+                    <td>{{i.first_name}}</td>
+                    <td>{{i.last_name}}</td>
+                    <td>{{i.Mobile}}</td>
+                    <td>{{i.department}}</td>
+                    <td>{{i.Pay_mode}}</td>
+                    <td>{{i.Time_mode}}</td>
+                    {% endfor %}
+                </tr>
+                <tr>
+                    <td>
+                        <button type="submit">Submit</button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+{%endblock%}

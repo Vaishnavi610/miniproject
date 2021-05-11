@@ -1,0 +1,22 @@
+{% extends 'owner/layout.html' %}
+
+{% block body %}
+   <h1>Add Member</h1>
+   {% if register %}
+        <h1>Registration succesful</h1>
+        <a href="{% url 'add_member' %}">add_another</a>
+   {% else %}
+        <form action=" " method="POST">
+            {% csrf_token %}
+            {{user_form.as_p}}
+            {{info_form.as_p}}
+
+            <button type="submit" class="btn btn-primary btn-block mb-4">Sign in</button>
+
+
+        </form>
+        
+   {% endif %}
+   
+     
+{% endblock %}

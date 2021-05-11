@@ -1,0 +1,27 @@
+{% extends 'owner/layout.html' %}
+
+{% block body %}
+<div class="row">
+    <div class="col-md-6">
+        <h4 class="text-center alert alert-info">Update Menu</h4>
+        <form  class="text-center" action="" method="POST">
+
+            <!-- Security token -->
+            {% csrf_token %}
+
+            <!-- Using the formset -->
+            {{ form.as_p }}
+        
+
+        <input type="submit" class="btn btn-success" value="Update">
+    
+        <a href="{% url 'menu' %}" class="btn btn-info" > Back To Menu</a>
+    </form>
+      
+
+    </div>
+    
+</div>
+
+
+{% endblock %}
