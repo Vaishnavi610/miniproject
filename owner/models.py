@@ -4,18 +4,16 @@ from django.contrib.auth.models import User
 
 # Create your models here
 class user(models.Model):
-    user = models.OneToOneField(User,default=None, null=True, on_delete=models.CASCADE)
+    user_id = models.ForeignKey(User,default=None, null=True, on_delete=models.CASCADE)
     ##add extra field
     
     Mobile = models.IntegerField()
-    first_name = models.CharField(max_length=50, null=True)
-    last_name = models.CharField(max_length=50, null=True)
     department = models.CharField(max_length=50, null=True)
     Pay_mode = models.CharField(max_length=50, null=True)
     Time_mode = models.CharField(max_length=50, null=True)
     
     def __str__(self):
-        return self.user.username
+        return str(self.user_id)
 
     
 
@@ -30,12 +28,15 @@ class Menu(models.Model):
     Price= models.IntegerField(default=1, null=True)
     category= models.CharField(max_length=50, null=True, choices=CATEGORY)
 
+    def __str__(self):
+        return self.Name
+
 class Transaction(models.Model):
-    Member_id = models.ForeignKey(user, on_delete=models.CASCADE, null=True)
-    Menu_id = models.ForeignKey(Menu, on_delete=models.CASCADE, null=True)
+    Member_id = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
+    Menu1_id = models.ForeignKey(Menu, on_delete=models.CASCADE, null=True)
     date_added=models.DateTimeField(auto_now_add=True,null=True)
     Quantity=models.IntegerField(default=1)
-    Paid = models.BooleanField(default=0)
+    Paid = models.BooleanField(default=False)
 
 class Payment(models.Model):
     CATEGORY = (
@@ -48,5 +49,20 @@ class Payment(models.Model):
     Pay_categoery = models.CharField(max_length=50, null=True, choices=CATEGORY)
 
 
+class Absent(models.Model):
+    TIME = (
+        ('Day', 'Day'),
+        ('Night', 'Night'),
+        ('Both', 'Both')
+    )
+    SELECT = (
+        ('Today', 'Today'),
+        ('More', 'More')
+    )
+    Member_id = models.ForeignKey(user, on_delete=models.CASCADE, null=True)
+    Time = models.CharField(max_length=50, null=True, choices=TIME)
+    Day = models.CharField(max_length=50, null=True, choices=SELECT)
+    From_date = models.DateField(null=True)
+    To_date = models.DateField(null=True)
 
 

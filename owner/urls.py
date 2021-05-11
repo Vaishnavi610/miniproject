@@ -10,6 +10,7 @@ urlpatterns = [
     path("pay_history/", views.pay_history, name="pay_history"),
     path("menu/", views.menu, name="menu"),
     path("search/", views.search, name="search"),
+    # path("search/", views.extra_data, name="extra_data"),
     path("menu2/", views.menu2, name="menu2"),
     path("home/", views.home, name="home"),
     path("index/", views.index, name="index"),
@@ -22,5 +23,10 @@ urlpatterns = [
     path("members_data/", views.member, name="members_data"),
     path("add_menu/", views.add_menu, name="add_menu"),
     path("delete/<int:id>", views.delete_menu, name="deletemenu"),
+    path("add_transaction/<int:pk>",views.add_transaction, name="add_transaction"),
     path("<int:id>/", views.update_menu, name="updatemenu"),
+    path("notcome/", views.notcome, name="notcome"),
+    path("absent/", views.absent, name="absent"),
+    path("userprofile/", views.userprofile, name="userprofile"),
+
 ]

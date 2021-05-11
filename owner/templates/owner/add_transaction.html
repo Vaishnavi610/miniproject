@@ -1,0 +1,15 @@
+{% extends 'owner/layout.html' %}
+
+{% block body %}
+<h1>Add Transaction</h1>
+<form class="text-center" action="" method="POST">
+
+    <!-- Security token -->
+    {% csrf_token %}
+
+    <!-- Using the formset -->
+    {{ form.as_p }}
+
+    <input type="submit" class="btn btn-success" href="{% url 'add_transaction' pk %}" value="Submit">
+</form>
+{% endblock %}

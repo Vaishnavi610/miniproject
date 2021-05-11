@@ -22,21 +22,20 @@
                 </tr>
                 {% for i in data %}
                 <tr>
-                    <td>{{i.user_id}} </td>
-
+                    {{i.id}}
+                    <td>{{i.username}} </td>
                     <td>{{i.first_name}}</td>
                     <td>{{i.last_name}}</td>
-                    <td>{{i.Mobile}}</td>
-                    <td>{{i.department}}</td>
-                    <td>{{i.Pay_mode}}</td>
-                    <td>{{i.Time_mode}}</td>
+                  
+                   
+                   
+                    <td><button>
+                        <a href="{% url 'add_transaction' i.id %}" class="navbar-link btn-lg"
+                            style="background-color:#e97f06;color:hsl(0, 29%, 97%);">Add</a>
+                    </button>
                     {% endfor %}
                 </tr>
-                <tr>
-                    <td>
-                        <button type="submit">Submit</button>
-                    </td>
-                </tr>
+               
             </table>
         </div>
     </div>

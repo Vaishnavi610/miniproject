@@ -8,13 +8,36 @@
    {% else %}
         <form action=" " method="POST">
             {% csrf_token %}
-            {{user_form.as_p}}
+            
+          <label for="">UserName :</label>
+          {{user_form.username}}
+
+          <label for="">First Name :</label>
+          {{user_form.first_name}}
+          
+          <label for="">Last Name :</label>
+          {{user_form.last_name}}
+
+          <label for="">Email :</label>
+          {{user_form.email}}
+
+          <label for="">Password :</label>
+          {{user_form.password1}}
+
+          <label for="">Retype Password :</label>
+          {{user_form.password2}}
+
             {{info_form.as_p}}
+
+            {{user_form.errors}}
 
             <button type="submit" class="btn btn-primary btn-block mb-4">Sign in</button>
 
 
         </form>
+        <script>
+             $('input').addClass("form-control");
+        </script>
         
    {% endif %}
    

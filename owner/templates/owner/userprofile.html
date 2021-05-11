@@ -1,0 +1,36 @@
+{% extends 'owner/user.html' %}
+
+{% block body %}
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+<div class="container bootstrap snippets bootdey">
+    <div class="row">
+        <div class="profile-nav col-md-8">
+            <div class="panel">
+                <div class="user-heading round">
+                    <a href="#">
+                        <img src="https://bootdey.com/img/Content/avatar/avatar3.png" alt="">
+                    </a>
+                    <h1>{{request.user.username}}</h1>
+                    <p>{{request.user.email}}</p>
+                </div>
+                <div class="panel-body bio-graph-info">
+                    <h1>Bio Graph</h1>
+                </div>
+            </div>
+            <form class="text-center" action="" method="POST">
+                {% csrf_token %}
+                {% if form.non_field_errors %}
+                {% for error in form.non_field_errors %}
+                <p>{{errors}}</p>
+                {% endfor %}
+                {% endif %}
+                {% for fm in form %}
+                {{fm.label_tag}} {{fm}} {{fm.errors|striptags}} <br> <br>
+                {% endfor %}
+
+
+                <input type="submit" value="Save">
+            </form>
+
+
+            {% endblock %}

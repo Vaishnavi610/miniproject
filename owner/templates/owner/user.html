@@ -116,7 +116,7 @@
         <div id="mySidenav" class="sidenav">
             <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
             <a href="{% url 'home2' %}">home</a>
-            
+            <a href="{%url 'userprofile' %}">My Profile</a>
             <a href="{% url 'pay_history2' %}">payments history</a>
             <a href="{%url 'menu2' %}">Menu</a>
             <a href="{%url 'about_us2' %}">About Us</a>
@@ -130,7 +130,7 @@
           <div class="navbar"> 
               <div class="info">
               <ul>
-                  <li>owner name: {{request.user.username}}</li>
+                  <li>Member name: {{request.user.username}}</li>
                   <li>email Id: {{request.user.email}}</li>
                   <br>
                   <li><p id="fulldate"></p>
