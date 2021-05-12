@@ -59,7 +59,7 @@ class Absent(models.Model):
         ('Today', 'Today'),
         ('More', 'More')
     )
-    Member_id = models.ForeignKey(user, on_delete=models.CASCADE, null=True)
+    Member_id = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
     Time = models.CharField(max_length=50, null=True, choices=TIME)
     Day = models.CharField(max_length=50, null=True, choices=SELECT)
     From_date = models.DateField(null=True)
