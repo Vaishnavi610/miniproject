@@ -2,6 +2,8 @@
 
 {% block body %}
 <h1>Payment History</h1>
+
+
 <div class="row"> 
     <div class="col-md">
         <div class="card card-body">
@@ -10,16 +12,31 @@
             <table class="table">
                 <tr>
                     <th>member id</th>
-                    <th>month</th>
+                    <th>menu id</th>
+                    <th>Quantity</th>
                     <th>Total Amount</th>
                     <th>Due Amount</th>
                     <th>Status</th>
-                </tr>
-                
-                 
-                
+                </tr>   
+                <tbody>
+                    {%  for i in transaction %}
+                    <tr>
+                        <td>{{i.Member_id}} </td>
+                        <td>{{i.Menu1_id}}</td>
+                        <td>{{i.Quantity}}</td>
+                        <td></td>
+                        <td></td>
+                        <td>{{i.Paid}}</td>
+                       
+                    </tr>
+                    {% endfor %}
+
+                </tbody>
+              
             </table>
         </div>
     </div>
 </div>
+
+
 {% endblock %}

@@ -129,7 +129,8 @@ def feedback(request):
 @login_required(login_url='login')
 @allowed_users(allowed_roles=['admin'])
 def pay_history(request):
-    return render(request, 'owner/pay_history.html')
+    transaction = Transaction.objects.all()
+    return render(request, 'owner/pay_history.html', {'transaction': transaction})
 
 
 @login_required(login_url='login')
