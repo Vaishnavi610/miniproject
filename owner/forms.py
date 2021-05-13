@@ -40,11 +40,18 @@ class transactionform(forms.ModelForm):
         #labels = {'Paid': 'Paid', 'Menu_id': 'menu'}
 
 
+class DateInput(forms.DateInput):
+    input_type = 'date'
+
+
 class absentform(forms.ModelForm):
     class Meta:
         model = Absent
-        fields = ( 'Time',
-                  'Day', 'From_date', 'To_date')
+        fields = ( 'id','Time','Day', 'From_date', 'To_date')
+        widgets = {
+            'From_date': DateInput(),
+            'To_date' : DateInput()
+        }
 
 
 class EditUserProfileForm(UserChangeForm):
