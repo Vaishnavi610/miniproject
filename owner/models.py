@@ -41,6 +41,8 @@ class Transaction(models.Model):
     
     class Meta:
         ordering=['-Date_added']
+    def __str__(self):
+        return self.Member_id.username
 
 class Payment(models.Model):
     CATEGORY = (

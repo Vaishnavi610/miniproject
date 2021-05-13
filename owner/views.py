@@ -319,7 +319,13 @@ def add_payment(request, pk):
     })
 
 def more(request,pk):
-    print(type(pk))
-    a=Transaction.objects.all()
-    print(a)
-    return render(request, "owner/more.html")
+    a=[]
+    member = User.objects.get(pk=pk)
+    type(member)
+    values = Transaction.objects.filter(
+         Member_id__username__icontains=member,
+        )
+    print(values)
+    return render(request, "owner/more.html",{
+        'values':values
+    })

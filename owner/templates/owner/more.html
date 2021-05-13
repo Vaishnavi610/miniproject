@@ -2,4 +2,25 @@
 
 {%block body%}
 <h1>Transactions</h1>
+<table class="table">
+    <tr>
+        <th>Username</th>
+        <th>Menu</th>
+        <th>Date</th>
+        <th>Amount</th>
+        <th>Quantity</th>
+        <th>Paid</th>              
+    </tr>
+{%for i in values%}
+
+                <tr>
+                    <td> {{i.Member_id}}</td>
+                    <td>{{i.Menu1_id}} </td>
+                    <td>{{i.Date_added}}</td>
+                    <td>{{i.Amount}}</td>
+                    <td>{{i.Quantity}}</td>
+                    <td>{{i.Paid}}</td>
+                   </tr>
+{%endfor%}
+</table>
 {%endblock%}
