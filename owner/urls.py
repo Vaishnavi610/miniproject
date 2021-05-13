@@ -21,6 +21,7 @@ urlpatterns = [
     path("pay_history2/", views.pay_history2, name="pay_history2"),
     path("home2/", views.home2, name="home2"),
     path("members_data/", views.member, name="members_data"),
+    path("members_data/more/<int:pk>", views.more, name="more"),
     path("add_menu/", views.add_menu, name="add_menu"),
     path("delete/<int:id>", views.delete_menu, name="deletemenu"),
     path("add_transaction/<int:pk>",views.add_transaction, name="add_transaction"),

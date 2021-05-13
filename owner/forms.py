@@ -16,7 +16,7 @@ class CreateUserForm(UserCreationForm):
 class info(forms.ModelForm):
     class Meta():
         model = user
-        fields = ('Mobile','department','Pay_mode','Time_mode')
+        fields = ('Mobile','Department','Pay_mode','Time_mode')
         
 
 
@@ -29,8 +29,8 @@ class menuform(forms.ModelForm):
         model = Menu
   
         # specify fields to be used
-        fields = ('Menu_id','Name','category','Price')
-        labels = {'Name':'Enter Name' , 'category':'Enter category','Price':'Enter Price'}
+        fields = ('Menu_id','Name','Category','Price')
+        labels = {'Name':'Enter Name' , 'Category':'Enter category','Price':'Enter Price'}
     
 
 class transactionform(forms.ModelForm):

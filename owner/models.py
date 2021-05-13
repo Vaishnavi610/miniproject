@@ -8,7 +8,7 @@ class user(models.Model):
     ##add extra field
     
     Mobile = models.IntegerField()
-    department = models.CharField(max_length=50, null=True)
+    Department = models.CharField(max_length=50, null=True)
     Pay_mode = models.CharField(max_length=50, null=True)
     Time_mode = models.CharField(max_length=50, null=True)
     
@@ -26,7 +26,7 @@ class Menu(models.Model):
     Menu_id = models.AutoField(primary_key=True)
     Name= models.CharField(max_length=50, null=True)
     Price= models.IntegerField(default=1, null=True)
-    category= models.CharField(max_length=50, null=True, choices=CATEGORY)
+    Category= models.CharField(max_length=50, null=True, choices=CATEGORY)
 
     def __str__(self):
         return self.Name
@@ -34,9 +34,13 @@ class Menu(models.Model):
 class Transaction(models.Model):
     Member_id = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
     Menu1_id = models.ForeignKey(Menu, on_delete=models.CASCADE, null=True)
-    date_added=models.DateTimeField(auto_now_add=True,null=True)
+    Date_added=models.DateTimeField(auto_now_add=True,null=True)
+    Amount= models.IntegerField(default=1, null=True)
     Quantity=models.IntegerField(default=1)
     Paid = models.BooleanField(default=False)
+    
+    class Meta:
+        ordering=['-Date_added']
 
 class Payment(models.Model):
     CATEGORY = (
@@ -45,7 +49,7 @@ class Payment(models.Model):
     )
     Member_id = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
     Amount_paid = models.IntegerField(default=1, null=True)
-    date_added = models.DateTimeField(auto_now_add=True, null=True)
+    Date_added = models.DateTimeField(auto_now_add=True, null=True)
     Pay_categoery = models.CharField(max_length=50, null=True, choices=CATEGORY)
 
 

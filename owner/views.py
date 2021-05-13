@@ -84,10 +84,18 @@ def menu(request):
 @login_required(login_url='login')
 @allowed_users(allowed_roles=['admin'])
 def member(request):
-    user_data = user.objects.all()
+    user_data = User.objects.all()
+    '''for i in user_data:
+        for j in i:
+            print(j)
+            reff = i.id
+            a=user.objects.get(user_id=reff)
+            mobile=a.Mobile
+            department=a.Department
+            pay=a.Pay_mode
+            time=a.Time_mode'''
     return render(request, "owner/Members.html", {
-        'data': user_data
-    })
+        'data': user_data })
 
 
 @login_required(login_url='login')
@@ -209,10 +217,14 @@ def search(request):
         )
     for i in values:
         reff = i.id
-        print(reff)
+        a=user.objects.get(user_id=reff)
+        mobile=a.Mobile
+        department=a.Department
+        pay=a.Pay_mode
+        time=a.Time_mode
 
     return render(request, "owner/search.html", {
-        'data': values
+        'data': values,'mobile':mobile,'department':department,'pay':pay,'time':time
     })
 
 
@@ -226,6 +238,7 @@ def extra_data(request):
 
 
 def add_transaction(request, pk):
+    a=dict()
     if request.method == 'POST':
         form = transactionform(request.POST)
         if form.is_valid():
@@ -234,14 +247,24 @@ def add_transaction(request, pk):
 
             mn = int(form.data['Menu1_id'])
             mns = Menu.objects.get(Menu_id=mn)
+            m=str(mns)
             qt = form.data['Quantity']
+            qtr=int(qt)
+            b=Menu.objects.all()
+            
+           
+            for i in b:
+                a[i.Name]=i.Price
+            
+            if m in a.keys():
+                prc=a[m]*qtr
             pd = request.POST.get('Paid')
             if pd == 'on':
                 pd = True
             else:
                 pd = False
-            print(pd)
-            Transaction.objects.create(Member_id=member, Menu1_id=mns, Quantity=qt, Paid=pd)
+           
+            Transaction.objects.create(Member_id=member, Menu1_id=mns, Quantity=qt,Amount=prc, Paid=pd)
             # return redirect("add_transaction")
     else:
         form = transactionform()
@@ -294,3 +317,9 @@ def add_payment(request, pk):
     return render(request, "owner/add_payment.html",{
         'form': form,'pk':pk
     })
+
+def more(request,pk):
+    print(type(pk))
+    a=Transaction.objects.all()
+    print(a)
+    return render(request, "owner/more.html")
