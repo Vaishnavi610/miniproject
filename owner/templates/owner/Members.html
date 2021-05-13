@@ -15,7 +15,7 @@
                     <th>first_name</th>
                     
                     <th>last_name</th>
-                    <th>More</th>
+                    <th>Views details</th>
                    
                 </tr>
                 {%for i in data%}
@@ -25,7 +25,7 @@
                 <td>{{i.last_name}}</td>
                 <td><button>
                         <a href="{% url 'more' i.id %}" class="navbar-link btn-lg"
-                            style="background-color:#e97f06;color:hsl(0, 29%, 97%);">More</a>
+                            style="background-color:#e97f06;color:hsl(0, 29%, 97%);">More details</a>
                     </button>
                 {%endfor%}
                 </tr>
