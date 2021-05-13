@@ -21,9 +21,12 @@ class AbsentAdmin(admin.ModelAdmin):
     list_display = ("id",
                     "Time", "Day", "From_date", "To_date")
 
+class PaymentAdmin(admin.ModelAdmin):
+    list_display=("Member_id","Amount_paid","date_added","Pay_categoery")
+
 
 admin.site.register(user,  userAdmin)
-admin.site.register(Payment)
+admin.site.register(Payment,PaymentAdmin)
 admin.site.register(Menu, MenuAdmin)
 admin.site.register(Transaction,TransactionAdmin)
 admin.site.register(Absent, AbsentAdmin)

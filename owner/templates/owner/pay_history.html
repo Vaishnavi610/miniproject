@@ -12,21 +12,23 @@
             <table class="table">
                 <tr>
                     <th>member id</th>
-                    <th>menu id</th>
-                    <th>Quantity</th>
+                    
                     <th>Total Amount</th>
                     <th>Due Amount</th>
-                    <th>Status</th>
+                    <th></th>
                 </tr>   
                 <tbody>
                     {%  for i in transaction %}
                     <tr>
                         <td>{{i.Member_id}} </td>
-                        <td>{{i.Menu1_id}}</td>
-                        <td>{{i.Quantity}}</td>
                         <td></td>
                         <td></td>
-                        <td>{{i.Paid}}</td>
+                        <td><button>
+                                <a href="{% url 'add_payment' i.Member_id %}" class="navbar-link btn-lg"
+                                    style="background-color:#e97f06;color:hsl(0, 29%, 97%);">Add</a>
+                            </button>
+                        
+                        
                        
                     </tr>
                     {% endfor %}

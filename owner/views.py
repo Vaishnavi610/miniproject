@@ -278,3 +278,19 @@ def userprofile(request):
     else:
         fm = EditUserProfileForm(instance=request.user)
     return render(request, "owner/userprofile.html", {'form': fm})
+
+def add_payment(request, pk):
+    if request.method == 'POST':
+        form = paymentform(request.POST)
+        if form.is_valid():
+            form = paymentform(request.POST)
+            member = User.objects.get(pk=pk)
+            mns=form.data['Amount_paid']
+            qt=form.data['Pay_categoery']
+            Payment.objects.create(Member_id=member, Amount_paid=mns, Pay_categoery=qt)
+            # return redirect("add_transaction")
+    else:
+        form = paymentform()
+    return render(request, "owner/add_payment.html",{
+        'form': form,'pk':pk
+    })

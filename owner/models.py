@@ -43,7 +43,7 @@ class Payment(models.Model):
         ('Advance', 'Advance'),
         ('Due', 'Due')
     )
-    Member_id = models.ForeignKey(user, on_delete=models.CASCADE, null=True)
+    Member_id = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
     Amount_paid = models.IntegerField(default=1, null=True)
     date_added = models.DateTimeField(auto_now_add=True, null=True)
     Pay_categoery = models.CharField(max_length=50, null=True, choices=CATEGORY)

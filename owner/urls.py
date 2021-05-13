@@ -28,5 +28,5 @@ urlpatterns = [
     path("notcome/", views.notcome, name="notcome"),
     path("absent/", views.absent, name="absent"),
     path("userprofile/", views.userprofile, name="userprofile"),
-
+    path("add_payment/<int:pk>",views.add_payment, name="add_payment"),
 ]

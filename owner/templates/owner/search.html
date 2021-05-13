@@ -33,6 +33,10 @@
                         <a href="{% url 'add_transaction' i.id %}" class="navbar-link btn-lg"
                             style="background-color:#e97f06;color:hsl(0, 29%, 97%);">Add</a>
                     </button>
+                    <td><button>
+                            <a href="{% url 'add_payment' i.id %}" class="navbar-link btn-lg"
+                                style="background-color:#e97f06;color:hsl(0, 29%, 97%);">Add</a>
+                        </button>
                     {% endfor %}
                 </tr>
                

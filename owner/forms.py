@@ -55,3 +55,10 @@ class EditUserProfileForm(UserChangeForm):
         fields = {'username', 'first_name', 'last_name',
                   'email', 'date_joined', 'last_login'}
         labels = {'email': 'Email'}
+
+
+class paymentform(forms.ModelForm):
+    class Meta():
+        model = Payment
+        fields  = ('Amount_paid', 'Pay_categoery')
+        #labels labels = {'Amount_paid': 'Member_id'}
