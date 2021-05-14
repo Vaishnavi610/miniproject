@@ -14,13 +14,19 @@
 {%for i in values%}
 
                 <tr>
-                    <td> {{i.Member_id}}</td>
+                    <td> {{i.Member_id}}</td>y
                     <td>{{i.Menu1_id}} </td>
                     <td>{{i.Date_added}}</td>
                     <td>{{i.Amount}}</td>
                     <td>{{i.Quantity}}</td>
                     <td>{{i.Paid}}</td>
-                   </tr>
+                   
 {%endfor%}
+
+</tr>
+     <tr>
+         <td colspan=3>Total Amount =</td>
+         <td>{{total}}</td>
+     </tr>
 </table>
 {%endblock%}
