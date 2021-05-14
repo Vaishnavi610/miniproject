@@ -4,7 +4,7 @@
    <h1>Add Member</h1>
    {% if register %}
         <h1>Registration succesful</h1>
-        <a href="{% url 'add_member' %}">add_another</a>
+        <button  class="btn btn-light"><a href="{% url 'add_member' %}">add_another</a></button>
    {% else %}
         <form action=" " method="POST">
             {% csrf_token %}
@@ -29,9 +29,9 @@
 
             {{info_form.as_p}}
 
-            {{user_form.errors}}
+            {{user_form.errors.as_P}}
 
-            <button type="submit" class="btn btn-primary btn-block mb-4">Sign in</button>
+            <button type="submit" class="btn btn-primary ">Sign in</button>
 
 
         </form>
