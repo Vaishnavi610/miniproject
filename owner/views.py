@@ -215,6 +215,7 @@ def search(request):
     values = User.objects.filter(
         username__icontains=query,
         )
+    if values:
     for i in values:
         reff = i.id
         a=user.objects.get(user_id=reff)
@@ -226,6 +227,9 @@ def search(request):
     return render(request, "owner/search.html", {
         'data': values,'mobile':mobile,'department':department,'pay':pay,'time':time
     })
+    else:
+         return HttpResponse("does not exist")
+
 
 
 def extra_data(request):

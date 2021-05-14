@@ -61,11 +61,14 @@
                 font-size: 25px;
                 color:white;
             }
+            .ms{
+                text-align: center;
+            }
         </style>
     </head>
     <body>
         {% if message %}
-            <div>{{message}}</div>
+            <div class="ms"><h1>{{message}}</h1></div>
         {% endif %}
         
         <form class="box" action=" " method="post">
