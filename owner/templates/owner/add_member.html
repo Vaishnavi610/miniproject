@@ -6,6 +6,8 @@
         <h1>Registration succesful</h1>
         <button  class="btn btn-light"><a href="{% url 'add_member' %}">add_another</a></button>
    {% else %}
+   <div class="row"> 
+     <div class="col-md-6 offset-md-3">
         <form action=" " method="POST">
             {% csrf_token %}
             
@@ -31,10 +33,10 @@
 
             {{user_form.errors.as_P}}
 
-            <button type="submit" class="btn btn-primary ">Sign in</button>
-
-
-        </form>
+            <button type="submit" class="btn btn-success ">Sign in</button>
+          </form>
+          </div>
+     </div>
         <script>
              $('input').addClass("form-control");
         </script>
