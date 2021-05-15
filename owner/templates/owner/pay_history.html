@@ -11,28 +11,29 @@
         <div class="card card-body">
             <table class="table">
                 <tr>
-                    <th>member id</th>
+                    <th>Username</th>
                     
                     <th>Total Amount</th>
                     <th>Due Amount</th>
+                    <th>Advance Amount</th>
                     <th>status</th>
                 </tr>   
                 <tbody>
-                    {%  for i in transaction %}
+                   
                     <tr>
 
-                        <td></td>
-                        <td></td>
-                        <td></td>
-
-                        <td></td>
-                        <td></td>
+                        <td>{{member}}</td>
+                        <td>{{total}}</td>
+                        <td>{{due}}</td>
+                        <td>{{advance}}</td>
+                        <td>{{st}}</td>
+                      
                        
                         
                         
                        
                     </tr>
-                    {% endfor %}
+                  
 
                 </tbody>
               

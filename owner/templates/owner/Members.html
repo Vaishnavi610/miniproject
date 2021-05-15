@@ -26,7 +26,11 @@
                 <td><button>
                         <a href="{% url 'more' i.id %}" class="navbar-link btn-lg"
                             style="background-color:#e97f06;color:hsl(0, 29%, 97%);">More details</a>
-                    </button>
+                    </button></td>
+                <td><button>
+                        <a href="{% url 'pay_history' i.id %}" class="navbar-link btn-lg"
+                            style="background-color:#e97f06;color:hsl(0, 29%, 97%);">More details</a>
+                    </button></td>
                 {%endfor%}
                 </tr>
             </table>

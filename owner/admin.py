@@ -22,7 +22,7 @@ class AbsentAdmin(admin.ModelAdmin):
                     "Time", "Day", "From_date", "To_date")
 
 class PaymentAdmin(admin.ModelAdmin):
-    list_display=("Member_id","Amount_paid","Date_added","Pay_categoery")
+    list_display=("Member_id","Amount_paid","Date_added")
 
 
 admin.site.register(user,  userAdmin)

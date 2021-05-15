@@ -33,6 +33,7 @@ def login(request):
 @login_required(login_url='login')
 @admin_only
 def main(request):
+    
     return render(request, "owner/main.html")
 
 
@@ -98,11 +99,6 @@ def member(request):
         'data': user_data })
 
 
-@login_required(login_url='login')
-@allowed_users(allowed_roles=['admin'])
-def home(request):
-     return render(request, "owner/main.html")
-
 
 def logout(request):
     django_logout(request)
@@ -136,9 +132,32 @@ def feedback(request):
 
 @login_required(login_url='login')
 @allowed_users(allowed_roles=['admin'])
-def pay_history(request):
-    transaction = Transaction.objects.all()
-    return render(request, 'owner/pay_history.html', {'transaction': transaction})
+def pay_history(request,pk):
+    total=0
+    a=[]
+    member = User.objects.get(pk=pk)
+    type(member)
+    values = Transaction.objects.filter(
+         Member_id__username__icontains=member,
+        )
+    b = Payment.objects.filter(
+         Member_id__username__icontains=member,
+        )
+    for i in b:
+        adv=i.Amount_paid
+       
+    for i in values:
+        total=total+i.Amount
+
+    due=total-deu
+    if due<=0:
+        advance=-due
+        due=0
+        st='Paid'
+    else:
+        advance=0
+        st='Due'
+    return render(request, 'owner/pay_history.html', {'total':total,'member':member,'due':due,'st':st,'advance':advance})
 
 
 @login_required(login_url='login')
@@ -230,13 +249,7 @@ def search(request):
     
 
 
-def extra_data(request):
-    values = User.objects.filter(
-        username__icontains=reff,
-    )
-    return render(request, "owner/search.html", {
-        'data1': values
-    })
+
 
 
 def add_transaction(request, pk):
@@ -311,8 +324,7 @@ def add_payment(request, pk):
             form = paymentform(request.POST)
             member = User.objects.get(pk=pk)
             mns=form.data['Amount_paid']
-            qt=form.data['Pay_categoery']
-            Payment.objects.create(Member_id=member, Amount_paid=mns, Pay_categoery=qt)
+            Payment.objects.create(Member_id=member, Amount_paid=mns)
             # return redirect("add_transaction")
     else:
         form = paymentform()

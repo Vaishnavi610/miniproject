@@ -67,5 +67,5 @@ class EditUserProfileForm(UserChangeForm):
 class paymentform(forms.ModelForm):
     class Meta():
         model = Payment
-        fields  = ('Amount_paid', 'Pay_categoery')
-        #labels labels = {'Amount_paid': 'Member_id'}
+        fields  = ('Amount_paid',)
+        

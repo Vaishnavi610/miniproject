@@ -52,8 +52,7 @@ class Payment(models.Model):
     Member_id = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
     Amount_paid = models.IntegerField(default=1, null=True)
     Date_added = models.DateTimeField(auto_now_add=True, null=True)
-    Pay_categoery = models.CharField(max_length=50, null=True, choices=CATEGORY)
-
+  
 
 class Absent(models.Model):
     TIME = (
